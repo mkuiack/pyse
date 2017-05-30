@@ -3,17 +3,14 @@ sudo: required
 dist: trusty
 python:
 - 2.7
-- 3.4
-- 3.5
-- 3.6
 before_install:
   - sudo apt-get install -y software-properties-common
   - sudo add-apt-repository -y ppa:radio-astro/main
   - sudo apt-get update -q
-  - sudo apt-get install -qy casacore-data libcasacore2-dev libboost-python-dev libcfitsio3-dev wcslib-dev
+  - sudo apt-get install -qy casacore-data libboost-python-dev libcfitsio3-dev wcslib-dev python-casacore
 install:
-  - pip install --upgrade pip numpy nose coveralls
-  - pip install --upgrade numpy
+  - pip install --upgrade pip
+  - pip install --upgrade numpy nose coveralls
   - pip install .
 script:
 - nosetests --with-coverage --cover-package=sourcefinder
